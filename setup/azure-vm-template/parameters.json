@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "value": "westus2"
+            "value": "eastus"
         },
         "networkInterfaceName": {
             "value": "devsecops-cloud801"
@@ -76,7 +76,7 @@
             "value": "Static"
         },
         "publicIpAddressSku": {
-            "value": "Standard"
+            "value": "Basic"
         },
         "virtualMachineName": {
             "value": "devsecops-cloud"
