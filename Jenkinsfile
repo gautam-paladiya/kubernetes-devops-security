@@ -23,9 +23,11 @@ pipeline {
       
       stage('Docker Build and Push') {
             steps {
-              sh "printenv"
-              sh 'docker build -t gpaladiya/numeric-app:""$GIT_COMMIT"" .'
-              sh 'docker push gpaladiya/numeric-app:""$GIT_COMMIT""'
+              withDockerRegistry([credentialsId:"fb96da43-0b92-4ded-a601-d3b349e0dbbe", url:""]){
+                sh "printenv"
+                sh 'docker build -t gpaladiya/numeric-app:""$GIT_COMMIT"" .'
+                sh 'docker push gpaladiya/numeric-app:""$GIT_COMMIT""'
+              }
             }
         }   
     }
