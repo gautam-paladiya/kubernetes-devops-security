@@ -77,14 +77,13 @@
 							<version>0.12</version>
 						</dependency>
 					</dependencies>
-					<configuration>
-						<mutationThreshold>70</mutationThreshold>
-						<outputFormats>
-							<outputFormat>XML</outputFormat>
-							<outputFormat>HTML</outputFormat>
-						</outputFormats>
-					</configuration>
-				</executions>
+				<configuration>
+					<mutationThreshold>70</mutationThreshold>
+					<outputFormats>
+						<outputFormat>XML</outputFormat>
+						<outputFormat>HTML</outputFormat>
+					</outputFormats>
+				</configuration>
 			</plugin>
 			
 		</plugins>
