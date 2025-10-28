@@ -1,0 +1,6 @@
+fileignoreconfig:
+- filename: talisman/password.txt
+  checksum: 0420c422a703315d7068e6657b8bcbe1747e7fabd7d2d68cee7480a8120df3ee
+- filename: talismanrc
+  checksum: 1c24e4909997adebc39af54327b27628f5816f2edcc1fdc96526fd9c3a4ca4d8
+version: "1.0"
