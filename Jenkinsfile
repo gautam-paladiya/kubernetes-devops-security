@@ -21,15 +21,25 @@ pipeline {
             }
         }   
 
-      stage('Mutation Tests - PIT') {
-            steps {
-              sh "mvn org.pitest:pitest-maven:mutationCoverage"
-            }
+      // stage('Mutation Tests - PIT') {
+      //       steps {
+      //         sh "mvn org.pitest:pitest-maven:mutationCoverage"
+      //       }
 
-            post {
-              always {
-                pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
-              }
+      //       post {
+      //         always {
+      //           pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+      //         }
+      //       }
+      //   }
+      
+      stage('SonarQube') {
+            steps {
+              sh "mvn clean verify sonar:sonar \
+                  -Dsonar.projectKey=numeric-application \
+                  -Dsonar.projectName='numeric-application' \
+                  -Dsonar.host.url=http://gpaladiya.westus2.cloudapp.azure.com:9000 \
+                  -Dsonar.token=sqp_1eff2cf06920cfdc4c5c5c80897655425918b2f1"
             }
         }
       
