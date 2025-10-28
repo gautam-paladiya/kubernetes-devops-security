@@ -8,9 +8,16 @@ pipeline {
               archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true            }
         }   
 
-      stage('Unit test') {
+      stage('Unit test - Jacoco') {
             steps {
               sh "mvn test"
+            }
+
+            post {
+              always {
+                junit 'target/surefire-reports/*.xml'
+                jacoco executePattern: 'target/jacoco.exec'
+              }
             }
         }   
     }
