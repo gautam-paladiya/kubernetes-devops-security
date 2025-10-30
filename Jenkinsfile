@@ -35,11 +35,18 @@ pipeline {
       
       stage('SonarQube') {
             steps {
-              sh "mvn clean verify sonar:sonar \
+              withSonarQubeEnv('SonarQube'){
+                sh "mvn clean verify sonar:sonar \
                   -Dsonar.projectKey=numeric-application \
                   -Dsonar.projectName='numeric-application' \
                   -Dsonar.host.url=http://gpaladiya.westus2.cloudapp.azure.com:9000 \
                   -Dsonar.token=sqp_1eff2cf06920cfdc4c5c5c80897655425918b2f1"
+              }
+              timeout(time:2,unit:'MINUTES'){
+                script{
+                  waitForQualityGate abortPipeline:true
+                }
+              }
             }
         }
       
